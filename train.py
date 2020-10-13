@@ -33,14 +33,15 @@ y_predict = log.predict(X_test)
 #print(accuracy_score(y_test,y_predict))
 test_dataset = pd.read_csv('test.csv') 
 test_dataset = test_dataset[['Pclass','Sex','Age','SibSp','Fare','SibSp','Cost']]
-test_dataset.fillna(30,inplace = True)
+test_dataset.fillna(64,inplace = True)
 test_dataset.replace(['male','female'],[-1,1],inplace = True)
 test_factors_ar = np.array(test_dataset,dtype = float)
 print(test_factors_ar)
 prediction = log.predict(test_factors_ar)
 print(prediction.shape)
 copy = 'PassengerId,Survived\n'
-for _ in range(10000):
+limit = 1000000
+for _ in range(limit):
     copy = copy + (str(892+_)+','+str(prediction[_])) + '\n'
 fd = open('submission.csv','a')
 fd.write(copy)
