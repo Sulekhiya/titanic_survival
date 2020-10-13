@@ -21,6 +21,7 @@ print(training_dataset['Mrs.' in  str(training_dataset[['Name']]]))
 #training_dataset.dropna(inplace = True)
 '''
 y = np.array(training_dataset['Survived'])
+y1 = np.array(training_dataset['Pclass'])
 training_dataset.replace(['male','female'],[-1,1],inplace = True)
 factors_dataset = training_dataset[['Fare','Sex','Age','SibSp','Pclass']]
 X = np.array(factors_dataset)
